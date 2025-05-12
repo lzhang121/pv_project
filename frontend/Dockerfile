@@ -4,7 +4,7 @@ FROM node:18-alpine as build-stage
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build
+RUN rm -rf dist && npm run build
 
 # 生产阶段：用 nginx 托管静态文件
 FROM nginx:alpine as production-stage
